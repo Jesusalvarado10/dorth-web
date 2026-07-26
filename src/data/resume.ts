@@ -8,7 +8,6 @@
 // ── Personal Info ─────────────────────────────────────
 export const PERSONAL = {
   name:     'Dorth Arenas',
-  nameJp:   'ドース・アレナス',
   phone:    '786-643-3818',
   email:    'dorth0908@gmail.com',
   location: 'Orlando, FL',

@@ -3,7 +3,7 @@
  * Top navigation bar with logo and page links.
  */
 
-type Page = 'home' | 'curriculum';
+type Page = 'home' | 'about' | 'curriculum' | 'investigation';
 
 interface NavbarProps {
   activePage: Page;
@@ -19,7 +19,7 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
         onClick={() => onNavigate('home')}
         aria-label="Go to home"
       >
-        <span className="navbar-logo-text">刀 Dorth</span>
+        <span className="navbar-logo-text">Dorth</span>
         <div className="navbar-logo-dot" />
       </button>
 
@@ -36,11 +36,29 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
         </li>
         <li>
           <button
+            id="nav-about"
+            className={activePage === 'about' ? 'active' : ''}
+            onClick={() => onNavigate('about')}
+          >
+            About Me
+          </button>
+        </li>
+        <li>
+          <button
             id="nav-curriculum"
             className={activePage === 'curriculum' ? 'active' : ''}
             onClick={() => onNavigate('curriculum')}
           >
             Curriculum
+          </button>
+        </li>
+        <li>
+          <button
+            id="nav-investigation"
+            className={activePage === 'investigation' ? 'active' : ''}
+            onClick={() => onNavigate('investigation')}
+          >
+            Investigation
           </button>
         </li>
       </ul>

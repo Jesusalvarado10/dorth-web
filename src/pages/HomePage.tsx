@@ -5,23 +5,19 @@
  */
 
 import { useRef } from 'react';
-import { PERSONAL, STATS, EDUCATION } from '../data/resume';
-import PhotoGallery, { type GalleryImage } from '../components/PhotoGallery';
+import { PERSONAL } from '../data/resume';
 import Footer from '../components/Footer';
+import FeaturedVideo from '../components/FeaturedVideo';
 
 interface HomePageProps {
   profilePhoto:         string | null;
   onProfilePhotoChange: (url: string) => void;
-  galleryImages:        GalleryImage[];
-  onGalleryChange:      (imgs: GalleryImage[]) => void;
   onGoToCurriculum:     () => void;
 }
 
 export default function HomePage({
   profilePhoto,
   onProfilePhotoChange,
-  galleryImages,
-  onGalleryChange,
   onGoToCurriculum,
 }: HomePageProps) {
   const profileInputRef = useRef<HTMLInputElement>(null);
@@ -48,11 +44,10 @@ export default function HomePage({
           <div className="hero-text">
             <div className="hero-eyebrow">
               <div className="hero-eyebrow-line" />
-              <span className="hero-eyebrow-text">ポートフォリオ · Portfolio</span>
+              <span className="hero-eyebrow-text">Biomedical Portfolio</span>
             </div>
 
             <h1 className="hero-name">
-              <span className="hero-name-sub">{PERSONAL.nameJp}</span>
               {PERSONAL.name}
             </h1>
 
@@ -72,8 +67,11 @@ export default function HomePage({
                 onClick={onGoToCurriculum}
                 id="hero-cv-btn"
               >
-                🌸 View My CV
+                View My CV
               </button>
+              <a className="btn-secondary" href="#video-showcase" id="hero-video-btn">
+                🎬 Watch Video
+              </a>
               <a className="btn-secondary" href="#contact" id="hero-contact-btn">
                 ✉ Contact
               </a>
@@ -124,6 +122,11 @@ export default function HomePage({
       </section>
 
       {/* ══════════════════════════════════════════════════════
+          FEATURED VIDEO SECTION
+      ══════════════════════════════════════════════════════ */}
+      <FeaturedVideo videoId="1akRYV6naOM" />
+
+      {/* ══════════════════════════════════════════════════════
           CONTACT STRIP
       ══════════════════════════════════════════════════════ */}
       <section className="contact-strip" id="contact" aria-label="Contact information">
@@ -167,97 +170,6 @@ export default function HomePage({
           </div>
 
         </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════
-          STATS ROW
-      ══════════════════════════════════════════════════════ */}
-      <div style={{ background: 'linear-gradient(to bottom, var(--color-bg), var(--color-bg-card) 50%, var(--color-bg))' }}>
-        <section className="section" aria-label="Key highlights">
-          <div className="section-header">
-            <div className="section-label">実績 · Highlights</div>
-            <h2 className="section-title">By the Numbers</h2>
-          </div>
-
-          <div className="three-col">
-            {STATS.map((s) => (
-              <div key={s.label} className="stat-card">
-                <div className="stat-number">{s.value}</div>
-                <div className="stat-label">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
-
-      <div className="section-divider" />
-
-      {/* ══════════════════════════════════════════════════════
-          ABOUT / EDUCATION SNAPSHOT
-      ══════════════════════════════════════════════════════ */}
-      <section className="section" aria-labelledby="about-heading">
-        <div className="section-header">
-          <div className="section-label">自己紹介 · About</div>
-          <h2 className="section-title" id="about-heading">About Me</h2>
-          <p className="section-subtitle">
-            Passionate about biomedical sciences, research, and making a difference in healthcare.
-          </p>
-        </div>
-
-        <div className="two-col" style={{ alignItems: 'start' }}>
-          {/* Bio card */}
-          <div className="glass-card">
-            <div style={{ fontSize: 36, marginBottom: 16 }}>🧬</div>
-            <h3 style={{ fontFamily: 'var(--font-jp)', fontSize: 20, fontWeight: 700, marginBottom: 12, color: 'var(--color-accent-pink)' }}>
-              Who I Am
-            </h3>
-            <p style={{ color: 'var(--color-text-muted)', fontSize: 15, lineHeight: 1.8 }}>
-              I'm a Biomedical Sciences student at UCF with a strong academic record and a passion for research
-              and patient care. From biomechanics labs to aquatic emergencies, I thrive in high-stakes environments
-              that demand precision, empathy, and teamwork.
-            </p>
-          </div>
-
-          {/* Education snapshot */}
-          <div className="glass-card">
-            <div style={{ fontSize: 36, marginBottom: 16 }}>🎓</div>
-            <h3 style={{ fontFamily: 'var(--font-jp)', fontSize: 20, fontWeight: 700, marginBottom: 16, color: 'var(--color-accent-pink)' }}>
-              Education
-            </h3>
-            {EDUCATION.map((ed) => (
-              <div key={ed.degree} style={{ marginBottom: 16 }}>
-                <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--color-text-primary)', marginBottom: 2 }}>
-                  {ed.degree}
-                  {ed.gpa && (
-                    <span style={{
-                      marginLeft: 8, padding: '2px 8px', borderRadius: 99, fontSize: 11,
-                      background: 'rgba(255,107,157,0.15)', color: 'var(--color-accent-pink)',
-                    }}>
-                      GPA {ed.gpa}
-                    </span>
-                  )}
-                </div>
-                <div style={{ fontSize: 13, color: 'var(--color-accent-cyan)' }}>{ed.school}</div>
-                <div style={{ fontSize: 12, color: 'var(--color-text-muted)', marginTop: 2 }}>{ed.date}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="section-divider" />
-
-      {/* ══════════════════════════════════════════════════════
-          PHOTO GALLERY
-      ══════════════════════════════════════════════════════ */}
-      <section className="section" aria-labelledby="gallery-heading">
-        <div className="section-header">
-          <div className="section-label">写真 · Gallery</div>
-          <h2 className="section-title" id="gallery-heading">Photos</h2>
-          <p className="section-subtitle">Moments, achievements, and memories.</p>
-        </div>
-
-        <PhotoGallery images={galleryImages} onImagesChange={onGalleryChange} />
       </section>
 
       <Footer />

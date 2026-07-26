@@ -20,9 +20,8 @@ import Footer from '../components/Footer';
 
 // ── Helper: section wrapper ────────────────────────────
 function ResumeSection({
-  labelJp, label, title, subtitle, children,
+  label, title, subtitle, children,
 }: {
-  labelJp:   string;
   label:     string;
   title:     string;
   subtitle?: string;
@@ -31,7 +30,7 @@ function ResumeSection({
   return (
     <section className="section" aria-labelledby={`section-${label.toLowerCase().replace(/\s/g, '-')}`}>
       <div className="section-header">
-        <div className="section-label">{labelJp} · {label}</div>
+        <div className="section-label">{label}</div>
         <h2 className="section-title" id={`section-${label.toLowerCase().replace(/\s/g, '-')}`}>
           {title}
         </h2>
@@ -73,14 +72,6 @@ function TimelineEntry({
 
 // ── Main Page ──────────────────────────────────────────
 export default function CurriculumPage() {
-
-  const handleDownload = () => {
-    const a = document.createElement('a');
-    a.href      = cvPdf;
-    a.download  = 'Dorth_Arenas_CV.pdf';
-    a.click();
-  };
-
   return (
     <main style={{ paddingTop: 80 }}>
 
@@ -88,10 +79,10 @@ export default function CurriculumPage() {
           PAGE HEADER
       ══════════════════════════════════════════════════════ */}
       <div className="cv-page-header">
-        <div className="cv-page-header-bg" aria-hidden="true">履歴書</div>
+        <div className="cv-page-header-bg" aria-hidden="true">CV</div>
         <div className="cv-page-header-inner">
           <div className="section-label" style={{ display: 'inline-flex', marginBottom: 16 }}>
-            履歴書 · Curriculum Vitae
+            Curriculum Vitae
           </div>
           <h1 className="cv-page-title">{PERSONAL.name}</h1>
           <p className="cv-page-subtitle">{PERSONAL.tagline}</p>
@@ -106,34 +97,6 @@ export default function CurriculumPage() {
         aria-label="CV PDF viewer"
       >
         <div className="pdf-panel">
-          {/* Header bar */}
-          <div className="pdf-panel-header">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <span className="pdf-badge">PDF</span>
-              <span className="pdf-filename">Dorth_Arenas_CV.pdf</span>
-            </div>
-            <div className="pdf-actions">
-              <button
-                className="btn-download"
-                onClick={handleDownload}
-                id="download-cv-btn"
-                aria-label="Download CV PDF"
-              >
-                ⬇ Download CV
-              </button>
-              <a
-                className="btn-outline"
-                href={cvPdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                id="open-cv-btn"
-                aria-label="Open CV in new tab"
-              >
-                ↗ Open
-              </a>
-            </div>
-          </div>
-
           {/* Embedded viewer */}
           <embed
             src={cvPdf}
@@ -152,7 +115,7 @@ export default function CurriculumPage() {
           WORK EXPERIENCE
       ══════════════════════════════════════════════════════ */}
       <ResumeSection
-        labelJp="職歴" label="Experience"
+        label="Experience"
         title="Work Experience"
         subtitle="Roles across healthcare, guest services, and emergency response."
       >
@@ -176,7 +139,7 @@ export default function CurriculumPage() {
       ══════════════════════════════════════════════════════ */}
       <div style={{ background: 'linear-gradient(to bottom, var(--color-bg), var(--color-bg-card) 50%, var(--color-bg))' }}>
         <ResumeSection
-          labelJp="研究" label="Research"
+          label="Research"
           title="Research"
           subtitle="Biomechanics, bioinformatics, and genomics research projects."
         >
@@ -207,7 +170,7 @@ export default function CurriculumPage() {
           CERTIFICATIONS
       ══════════════════════════════════════════════════════ */}
       <ResumeSection
-        labelJp="資格" label="Certifications"
+        label="Certifications"
         title="Certifications & Training"
         subtitle="Professional credentials in clinical, research, and emergency care."
       >
@@ -230,7 +193,7 @@ export default function CurriculumPage() {
           SKILLS
       ══════════════════════════════════════════════════════ */}
       <div style={{ background: 'linear-gradient(to bottom, var(--color-bg), var(--color-bg-card) 50%, var(--color-bg))' }}>
-        <ResumeSection labelJp="スキル" label="Skills" title="Skills & Languages">
+        <ResumeSection label="Skills" title="Skills & Languages">
           <div className="two-col">
             <div>
               {Object.entries(SKILLS).map(([category, tags]) => (
@@ -276,14 +239,14 @@ export default function CurriculumPage() {
           ACTIVITIES & CLUBS
       ══════════════════════════════════════════════════════ */}
       <ResumeSection
-        labelJp="活動" label="Activities"
+        label="Activities"
         title="Activities & Involvement"
         subtitle="Academic organizations, volunteering, sports, and community engagement."
       >
         <div className="two-col">
           {ACTIVITIES.map((a) => (
             <div key={a.name} className="cert-item">
-              <span className="cert-icon">🌸</span>
+              <span className="cert-icon">🏅</span>
               <div>
                 <div className="cert-name">{a.name}</div>
                 <div className="cert-org">{a.org} · {a.date}</div>
@@ -293,28 +256,7 @@ export default function CurriculumPage() {
         </div>
       </ResumeSection>
 
-      {/* ══════════════════════════════════════════════════════
-          TIPS ROW
-      ══════════════════════════════════════════════════════ */}
-      <div className="cv-tips">
-        <div className="cv-tips-inner">
-          <div className="section-label" style={{ display: 'inline-flex', marginBottom: 24 }}>
-            ヒント · Tips
-          </div>
-          <div className="three-col">
-            {[
-              { icon: '📄', text: 'Click "Download CV" to save the PDF directly to your device.' },
-              { icon: '🔒', text: 'The PDF is embedded in the app — no external server is used.' },
-              { icon: '↗',  text: 'Click "Open" to view the PDF in a dedicated full-screen browser tab.' },
-            ].map((tip, i) => (
-              <div key={i} className="glass-card" style={{ padding: 20 }}>
-                <div style={{ fontSize: 28, marginBottom: 10 }}>{tip.icon}</div>
-                <p style={{ color: 'var(--color-text-muted)', fontSize: 14, lineHeight: 1.7 }}>{tip.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+
 
       <Footer />
     </main>

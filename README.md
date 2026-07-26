@@ -30,4 +30,21 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
-"# dorth-web" 
+
+## 🚀 Despliegue en Vercel
+
+El proyecto está configurado con `vercel.json` para despliegues en Vercel.
+
+### Opción 1: Desde la web de Vercel (Recomendado)
+1. Sube tu código a GitHub.
+2. Ve a [Vercel Dashboard](https://vercel.com/new).
+3. Importa el repositorio `dorth-web`.
+4. Vercel detectará la configuración automáticamente (`Framework: Vite`, `Output Directory: dist`).
+5. Haz clic en **Deploy**.
+
+### Opción 2: Desde la terminal con Vercel CLI
+```bash
+npm i -g vercel
+vercel
+```
+

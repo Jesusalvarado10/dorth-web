@@ -13,7 +13,7 @@
 import cvPdf from '../assets/Dorth Arenas_first draft.docx.pdf';
 import {
   PERSONAL, EXPERIENCE, RESEARCH,
-  EDUCATION, CERTIFICATIONS, SKILLS,
+  CERTIFICATIONS, SKILLS,
   HONORS, ACTIVITIES,
 } from '../data/resume';
 import Footer from '../components/Footer';
@@ -22,10 +22,10 @@ import Footer from '../components/Footer';
 function ResumeSection({
   label, title, subtitle, children,
 }: {
-  label:     string;
-  title:     string;
+  label: string;
+  title: string;
   subtitle?: string;
-  children:  React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
     <section className="section" aria-labelledby={`section-${label.toLowerCase().replace(/\s/g, '-')}`}>
@@ -45,11 +45,11 @@ function ResumeSection({
 function TimelineEntry({
   date, title, org, bullets, extra,
 }: {
-  date:     string;
-  title:    string;
-  org:      string;
-  bullets:  string[];
-  extra?:   React.ReactNode;
+  date: string;
+  title: string;
+  org: string;
+  bullets: string[];
+  extra?: React.ReactNode;
 }) {
   return (
     <div className="timeline-item">
@@ -154,8 +154,8 @@ export default function CurriculumPage() {
                 extra={
                   r.mentors
                     ? <div style={{ fontSize: 13, color: 'var(--color-text-muted)', marginBottom: 8 }}>
-                        Mentors: {r.mentors}
-                      </div>
+                      Mentors: {r.mentors}
+                    </div>
                     : null
                 }
               />

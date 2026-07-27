@@ -12,13 +12,13 @@ import FeaturedVideo from '../components/FeaturedVideo';
 interface HomePageProps {
   profilePhoto:         string | null;
   onProfilePhotoChange: (url: string) => void;
-  onGoToCurriculum:     () => void;
+  onGoToResume:         () => void;
 }
 
 export default function HomePage({
   profilePhoto,
   onProfilePhotoChange,
-  onGoToCurriculum,
+  onGoToResume,
 }: HomePageProps) {
   const profileInputRef = useRef<HTMLInputElement>(null);
 
@@ -64,10 +64,10 @@ export default function HomePage({
             <div className="hero-cta-group">
               <button
                 className="btn-primary"
-                onClick={onGoToCurriculum}
-                id="hero-cv-btn"
+                onClick={onGoToResume}
+                id="hero-resume-btn"
               >
-                View My CV
+                View My Resume
               </button>
               <a className="btn-secondary" href="#video-showcase" id="hero-video-btn">
                 🎬 Watch Video

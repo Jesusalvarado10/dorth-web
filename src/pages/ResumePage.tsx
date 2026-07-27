@@ -1,5 +1,5 @@
 /**
- * CurriculumPage.tsx
+ * ResumePage.tsx
  * Displays the full interactive resume with:
  *  - PDF viewer (imported from assets — no upload needed)
  *  - Work experience timeline
@@ -70,50 +70,37 @@ function TimelineEntry({
   );
 }
 
-// ── Main Page ──────────────────────────────────────────
-export default function CurriculumPage() {
+export default function ResumePage() {
   return (
     <main style={{ paddingTop: 80 }}>
-
-      {/* ══════════════════════════════════════════════════════
-          PAGE HEADER
-      ══════════════════════════════════════════════════════ */}
       <div className="cv-page-header">
-        <div className="cv-page-header-bg" aria-hidden="true">CV</div>
+        <div className="cv-page-header-bg" aria-hidden="true">RESUME</div>
         <div className="cv-page-header-inner">
           <div className="section-label" style={{ display: 'inline-flex', marginBottom: 16 }}>
-            Curriculum Vitae
+            Resume
           </div>
           <h1 className="cv-page-title">{PERSONAL.name}</h1>
           <p className="cv-page-subtitle">{PERSONAL.tagline}</p>
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════════════════
-          PDF VIEWER
-      ══════════════════════════════════════════════════════ */}
       <section
         style={{ padding: '64px var(--space-xl)', maxWidth: 1200, margin: '0 auto' }}
-        aria-label="CV PDF viewer"
+        aria-label="Resume PDF viewer"
       >
         <div className="pdf-panel">
-          {/* Embedded viewer */}
           <embed
             src={cvPdf}
             type="application/pdf"
             width="100%"
             height="600px"
-            title="Dorth Arenas — Curriculum Vitae"
+            title="Dorth Arenas — Resume"
             style={{ display: 'block' }}
           />
         </div>
       </section>
 
       <div className="section-divider" />
-
-      {/* ══════════════════════════════════════════════════════
-          WORK EXPERIENCE
-      ══════════════════════════════════════════════════════ */}
       <ResumeSection
         label="Experience"
         title="Work Experience"
@@ -133,10 +120,6 @@ export default function CurriculumPage() {
       </ResumeSection>
 
       <div className="section-divider" />
-
-      {/* ══════════════════════════════════════════════════════
-          RESEARCH
-      ══════════════════════════════════════════════════════ */}
       <div style={{ background: 'linear-gradient(to bottom, var(--color-bg), var(--color-bg-card) 50%, var(--color-bg))' }}>
         <ResumeSection
           label="Research"
@@ -165,10 +148,6 @@ export default function CurriculumPage() {
       </div>
 
       <div className="section-divider" />
-
-      {/* ══════════════════════════════════════════════════════
-          CERTIFICATIONS
-      ══════════════════════════════════════════════════════ */}
       <ResumeSection
         label="Certifications"
         title="Certifications & Training"
@@ -189,9 +168,6 @@ export default function CurriculumPage() {
 
       <div className="section-divider" />
 
-      {/* ══════════════════════════════════════════════════════
-          SKILLS
-      ══════════════════════════════════════════════════════ */}
       <div style={{ background: 'linear-gradient(to bottom, var(--color-bg), var(--color-bg-card) 50%, var(--color-bg))' }}>
         <ResumeSection label="Skills" title="Skills & Languages">
           <div className="two-col">
@@ -234,10 +210,6 @@ export default function CurriculumPage() {
       </div>
 
       <div className="section-divider" />
-
-      {/* ══════════════════════════════════════════════════════
-          ACTIVITIES & CLUBS
-      ══════════════════════════════════════════════════════ */}
       <ResumeSection
         label="Activities"
         title="Activities & Involvement"
@@ -255,8 +227,6 @@ export default function CurriculumPage() {
           ))}
         </div>
       </ResumeSection>
-
-
 
       <Footer />
     </main>

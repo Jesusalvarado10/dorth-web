@@ -3,7 +3,7 @@
  * Top navigation bar with logo and page links.
  */
 
-type Page = 'home' | 'about' | 'curriculum' | 'investigation';
+type Page = 'home' | 'about' | 'resume' | 'investigation';
 
 interface NavbarProps {
   activePage: Page;
@@ -45,11 +45,11 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
         </li>
         <li>
           <button
-            id="nav-curriculum"
-            className={activePage === 'curriculum' ? 'active' : ''}
-            onClick={() => onNavigate('curriculum')}
+            id="nav-resume"
+            className={activePage === 'resume' ? 'active' : ''}
+            onClick={() => onNavigate('resume')}
           >
-            Curriculum
+            Resume
           </button>
         </li>
         <li>

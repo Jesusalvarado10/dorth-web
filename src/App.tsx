@@ -14,12 +14,12 @@ import './index.css';
 
 import Navbar                from './components/Navbar';
 import HomePage              from './pages/HomePage';
-import CurriculumPage        from './pages/CurriculumPage';
+import ResumePage            from './pages/ResumePage';
 import AboutMePage           from './pages/AboutMePage';
 import defaultProfilePhoto   from './assets/profile-photo.jpeg';
 
 // ── Types ──────────────────────────────────────────────
-type Page = 'home' | 'about' | 'curriculum' | 'investigation';
+type Page = 'home' | 'about' | 'resume' | 'investigation';
 
 // ── App ────────────────────────────────────────────────
 export default function App() {
@@ -41,12 +41,12 @@ export default function App() {
           <HomePage
             profilePhoto={profilePhoto}
             onProfilePhotoChange={setProfilePhoto}
-            onGoToCurriculum={() => navigate('curriculum')}
+            onGoToResume={() => navigate('resume')}
           />
         ) : currentPage === 'about' ? (
           <AboutMePage />
-        ) : currentPage === 'curriculum' ? (
-          <CurriculumPage />
+        ) : currentPage === 'resume' ? (
+          <ResumePage />
         ) : (
           <div className="section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <h2>Investigation Section Coming Soon</h2>

@@ -1,58 +1,50 @@
 /**
  * App.tsx
  * ─────────────────────────────────────────────────────
- * Root component. Manages global state and page routing.
- *
- * State held here (lifted up) so both pages share it:
- *   • currentPage   — which page is visible
- *   • profilePhoto  — hero profile image URL
- *   • galleryImages — personal photo gallery
+ * Root component. Configures React Router routes for all pages.
  */
 
 import { useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './index.css';
 
 import Navbar                from './components/Navbar';
 import HomePage              from './pages/HomePage';
 import ResumePage            from './pages/ResumePage';
 import AboutMePage           from './pages/AboutMePage';
+import ResearchPage          from './pages/ResearchPage';
+import ClinicalPage          from './pages/ClinicalPage';
+import PathToMedicinePage    from './pages/PathToMedicinePage';
 import defaultProfilePhoto   from './assets/profile-photo.jpeg';
 
-// ── Types ──────────────────────────────────────────────
-type Page = 'home' | 'about' | 'resume' | 'investigation';
-
-// ── App ────────────────────────────────────────────────
 export default function App() {
-  const [currentPage,   setCurrentPage]   = useState<Page>('home');
-  const [profilePhoto,  setProfilePhoto]  = useState<string | null>(defaultProfilePhoto);
-
-  const navigate = (page: Page) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const [profilePhoto, setProfilePhoto] = useState<string | null>(defaultProfilePhoto);
+  const navigate = useNavigate();
 
   return (
-    <>
-      {/* Main content */}
-      <div className="page-wrapper">
-        <Navbar activePage={currentPage} onNavigate={navigate} />
+    <div className="page-wrapper">
+      <Navbar />
 
-        {currentPage === 'home' ? (
-          <HomePage
-            profilePhoto={profilePhoto}
-            onProfilePhotoChange={setProfilePhoto}
-            onGoToResume={() => navigate('resume')}
-          />
-        ) : currentPage === 'about' ? (
-          <AboutMePage />
-        ) : currentPage === 'resume' ? (
-          <ResumePage />
-        ) : (
-          <div className="section" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <h2>Investigation Section Coming Soon</h2>
-          </div>
-        )}
-      </div>
-    </>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              profilePhoto={profilePhoto}
+              onProfilePhotoChange={setProfilePhoto}
+              onGoToResume={() => {
+                navigate('/resume');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
+          }
+        />
+        <Route path="/about" element={<AboutMePage />} />
+        <Route path="/resume" element={<ResumePage />} />
+        <Route path="/research" element={<ResearchPage />} />
+        <Route path="/clinical" element={<ClinicalPage />} />
+        <Route path="/path" element={<PathToMedicinePage />} />
+      </Routes>
+    </div>
   );
 }

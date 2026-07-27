@@ -39,21 +39,35 @@
   background: var(--color-accent-gold); border-radius: 50%;
   animation: pulse-glow 2s ease infinite;
 }
-.navbar-nav { display: flex; align-items: center; gap: var(--space-lg); list-style: none; }
+.navbar-nav { display: flex; align-items: center; gap: var(--space-md); list-style: none; }
+.navbar-nav a,
 .navbar-nav button {
   color: var(--color-text-muted); background: none; border: none;
-  font-family: var(--font-body); font-size: 14px; font-weight: 400;
-  letter-spacing: 0.05em; cursor: pointer; padding: 6px 0;
-  position: relative; transition: color var(--transition-fast);
+  font-family: var(--font-body); font-size: 14px; font-weight: 500;
+  letter-spacing: 0.03em; cursor: pointer; padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  position: relative; transition: all var(--transition-fast);
+  text-decoration: none;
 }
+.navbar-nav a::after,
 .navbar-nav button::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  content: ''; position: absolute; bottom: 2px; left: 12px; right: 12px; height: 3px;
+  border-radius: 99px;
   background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary));
   transform: scaleX(0); transition: transform var(--transition-med);
 }
-.navbar-nav button:hover,
-.navbar-nav button.active { color: var(--color-text-primary); }
+.navbar-nav a:hover,
+.navbar-nav button:hover {
+  color: var(--color-accent-primary);
+}
+.navbar-nav a.active,
+.navbar-nav button.active {
+  color: var(--color-accent-primary);
+  font-weight: 600;
+}
+.navbar-nav a:hover::after,
 .navbar-nav button:hover::after,
+.navbar-nav a.active::after,
 .navbar-nav button.active::after { transform: scaleX(1); }
 
 /* ── Section Header ── */

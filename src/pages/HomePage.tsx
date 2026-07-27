@@ -140,14 +140,6 @@ export default function HomePage({
             </div>
           </a>
 
-          <a href={`tel:${PERSONAL.phone}`} className="contact-item" id="contact-phone">
-            <div className="contact-icon">📞</div>
-            <div>
-              <div className="contact-label">PHONE</div>
-              <div>{PERSONAL.phone}</div>
-            </div>
-          </a>
-
           <a
             href={`https://${PERSONAL.linkedin}`}
             target="_blank" rel="noopener noreferrer"
@@ -160,14 +152,6 @@ export default function HomePage({
               <div>{PERSONAL.linkedin}</div>
             </div>
           </a>
-
-          <div className="contact-item" id="contact-location">
-            <div className="contact-icon">📍</div>
-            <div>
-              <div className="contact-label">LOCATION</div>
-              <div>{PERSONAL.location}</div>
-            </div>
-          </div>
 
         </div>
       </section>

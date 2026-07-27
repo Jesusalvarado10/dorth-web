@@ -1,22 +1,22 @@
 /**
  * Navbar.tsx
- * Top navigation bar with logo and page links.
+ * Top navigation bar with logo and page links powered by React Router.
  */
 
-type Page = 'home' | 'about' | 'resume' | 'investigation';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-interface NavbarProps {
-  activePage: Page;
-  onNavigate: (page: Page) => void;
-}
+export default function Navbar() {
+  const navigate = useNavigate();
 
-export default function Navbar({ activePage, onNavigate }: NavbarProps) {
   return (
     <nav className="navbar" role="navigation" aria-label="Main navigation">
       {/* Logo */}
       <button
         className="navbar-logo"
-        onClick={() => onNavigate('home')}
+        onClick={() => {
+          navigate('/');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         aria-label="Go to home"
       >
         <span className="navbar-logo-text">Dorth</span>
@@ -26,40 +26,59 @@ export default function Navbar({ activePage, onNavigate }: NavbarProps) {
       {/* Links */}
       <ul className="navbar-nav">
         <li>
-          <button
-            id="nav-home"
-            className={activePage === 'home' ? 'active' : ''}
-            onClick={() => onNavigate('home')}
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             Home
-          </button>
+          </NavLink>
         </li>
         <li>
-          <button
-            id="nav-about"
-            className={activePage === 'about' ? 'active' : ''}
-            onClick={() => onNavigate('about')}
+          <NavLink
+            to="/about"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             About Me
-          </button>
+          </NavLink>
         </li>
         <li>
-          <button
-            id="nav-resume"
-            className={activePage === 'resume' ? 'active' : ''}
-            onClick={() => onNavigate('resume')}
+          <NavLink
+            to="/resume"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             Resume
-          </button>
+          </NavLink>
         </li>
         <li>
-          <button
-            id="nav-investigation"
-            className={activePage === 'investigation' ? 'active' : ''}
-            onClick={() => onNavigate('investigation')}
+          <NavLink
+            to="/research"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            Investigation
-          </button>
+            Research
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/clinical"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            Clinical Care
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/path"
+            className={({ isActive }) => (isActive ? 'active' : '')}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            Path to Medicine
+          </NavLink>
         </li>
       </ul>
     </nav>

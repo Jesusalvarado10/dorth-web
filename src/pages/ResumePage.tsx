@@ -10,7 +10,8 @@
  *  - Honors & Activities
  */
 
-import cvPdf from '../assets/Dorth Arenas_first draft.docx.pdf';
+import { useState } from 'react';
+import cvPdf from '../assets/Dorth Arenas_first draft.pdf';
 import {
   PERSONAL, EXPERIENCE, RESEARCH,
   CERTIFICATIONS, SKILLS,
@@ -71,6 +72,8 @@ function TimelineEntry({
 }
 
 export default function ResumePage() {
+  const [certModal, setCertModal] = useState(false);
+
   return (
     <main style={{ paddingTop: 80 }}>
       <div className="cv-page-header">
@@ -89,6 +92,33 @@ export default function ResumePage() {
         aria-label="Resume PDF viewer"
       >
         <div className="pdf-panel">
+          <div className="pdf-panel-header">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+              <span className="pdf-badge">RESUME</span>
+              <span className="pdf-filename">Dorth Arenas — Resume</span>
+            </div>
+            <div className="pdf-actions">
+              <button className="btn-outline" onClick={() => setCertModal(true)}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                </svg>
+                Fullscreen
+              </button>
+              <a
+                href={cvPdf}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-download"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+                View Full Resume
+              </a>
+            </div>
+          </div>
           <embed
             src={cvPdf}
             type="application/pdf"
@@ -229,6 +259,52 @@ export default function ResumePage() {
       </ResumeSection>
 
       <Footer />
+
+      {/* Resume fullscreen modal */}
+      {certModal && (
+        <div className="lightbox" onClick={() => setCertModal(false)}>
+          <div
+            style={{
+              width: '92vw',
+              maxWidth: 1100,
+              height: '88vh',
+              background: 'var(--color-bg-card)',
+              borderRadius: 'var(--radius-lg)',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              border: '1px solid var(--color-border)',
+              boxShadow: '0 25px 60px rgba(0,0,0,0.4)',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="pdf-panel-header">
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <span className="pdf-badge">RESUME</span>
+                <span className="pdf-filename">Dorth Arenas — Resume</span>
+              </div>
+              <div className="pdf-actions">
+                <a href={cvPdf} target="_blank" rel="noopener noreferrer" className="btn-outline">
+                  Open in New Tab ↗
+                </a>
+                <button
+                  className="lightbox-close"
+                  onClick={() => setCertModal(false)}
+                  aria-label="Close"
+                  style={{ position: 'static', width: 36, height: 36 }}
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+            <iframe
+              src={cvPdf}
+              title="Dorth Arenas — Resume"
+              style={{ flex: 1, width: '100%', border: 'none' }}
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }

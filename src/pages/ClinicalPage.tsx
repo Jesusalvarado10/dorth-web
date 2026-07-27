@@ -4,6 +4,8 @@
  */
 
 import Footer from '../components/Footer';
+import doctorImg from '../assets/doctor.jpeg';
+import workingImg from '../assets/working.jpeg';
 
 export default function ClinicalPage() {
   return (
@@ -97,6 +99,9 @@ export default function ClinicalPage() {
                   <li>Witnessed how a podiatrist examines patients, evaluates concerns, and determines appropriate treatment.</li>
                   <li>Gained appreciation for the importance of clear patient communication and creating comfort during examinations.</li>
                 </ul>
+                <div className="timeline-media-card">
+                  <img src={doctorImg} alt="Dr. James Losito, DPM - Podiatric Clinical Shadowing" />
+                </div>
               </div>
             </div>
 
@@ -115,6 +120,9 @@ export default function ClinicalPage() {
                   <li>Observed how structured care integrates medical treatment, counseling, monitoring, and continued support.</li>
                   <li>Developed understanding of addiction as a medical condition and the importance of treating every patient with compassion, dignity, and without judgment.</li>
                 </ul>
+                <div className="timeline-media-card">
+                  <img src={workingImg} alt="Clinical Working Experience - New Season Treatment Center" />
+                </div>
               </div>
             </div>
 

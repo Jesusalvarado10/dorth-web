@@ -5,6 +5,7 @@
  */
 
 import Footer from '../components/Footer';
+import workingImg from '../assets/working.jpeg';
 
 export default function PathToMedicinePage() {
   return (
@@ -52,10 +53,6 @@ export default function PathToMedicinePage() {
               <p style={{ fontSize: 14, color: 'var(--color-text-muted)', lineHeight: 1.7, marginTop: 4 }}>
                 Graduated from Valencia College as a Seneff Honors Scholar and continued my education at UCF as a Burnett Honors Scholar.
               </p>
-              {/* Photo Placeholder */}
-              <div className="photo-placeholder-slot">
-                <span>📷 Photo Slot: Academic Graduation / Honors Ceremony</span>
-              </div>
             </div>
           </div>
 
@@ -72,10 +69,6 @@ export default function PathToMedicinePage() {
               <p style={{ fontSize: 14, color: 'var(--color-text-muted)', lineHeight: 1.7, marginTop: 4 }}>
                 Completed bioinformatics and biomechanics projects and presented research at Valencia College and UCF.
               </p>
-              {/* Photo Placeholder */}
-              <div className="photo-placeholder-slot">
-                <span>📷 Photo Slot: Research Symposium / Poster Presentation</span>
-              </div>
             </div>
           </div>
 
@@ -92,9 +85,8 @@ export default function PathToMedicinePage() {
               <p style={{ fontSize: 14, color: 'var(--color-text-muted)', lineHeight: 1.7, marginTop: 4 }}>
                 Completed approximately 150 volunteer hours at Orlando Health Surgery Guest Services assisting patients and families.
               </p>
-              {/* Photo Placeholder */}
-              <div className="photo-placeholder-slot">
-                <span>📷 Photo Slot: Clinical Service / Volunteering</span>
+              <div className="timeline-media-card">
+                <img src={workingImg} alt="Clinical & Hospital Patient Service Experience" />
               </div>
             </div>
           </div>
@@ -112,10 +104,6 @@ export default function PathToMedicinePage() {
               <p style={{ fontSize: 14, color: 'var(--color-text-muted)', lineHeight: 1.7, marginTop: 4 }}>
                 Responded to three major aquatic emergencies as a deep-water lifeguard with composure and quick decision-making.
               </p>
-              {/* Photo Placeholder */}
-              <div className="photo-placeholder-slot">
-                <span>📷 Photo Slot: Lifeguarding / Emergency Care Training</span>
-              </div>
             </div>
           </div>
 
@@ -271,35 +259,6 @@ export default function PathToMedicinePage() {
 
         </div>
       </section>
-
-      <div className="section-divider" />
-
-      {/* ─── Closing Reflection ─── */}
-      <div style={{ background: 'linear-gradient(to bottom, var(--color-bg), var(--color-bg-card) 50%, var(--color-bg))' }}>
-        <section className="section" aria-label="Closing Reflection">
-          <div className="section-header">
-            <div className="section-label">Final Thoughts</div>
-            <h2 className="section-title">Closing Reflection</h2>
-          </div>
-          <div
-            className="glass-card"
-            style={{
-              maxWidth: 860,
-              margin: '0 auto',
-              padding: '36px 40px',
-              borderLeft: '4px solid var(--color-accent-gold)',
-            }}
-          >
-            <p style={{ fontSize: 16, lineHeight: 1.9, color: 'var(--color-text-muted)', margin: 0, fontStyle: 'italic' }}>
-              I understand that becoming an orthopedic surgeon will require years of continued work and improvement.
-              However, the experiences represented in this portfolio have given me a clearer direction and stronger
-              reasons to continue. My goal is to become a physician who understands both the science of human movement
-              and the personal importance of recovery, combining research and patient care to help people regain their
-              independence and quality of life.
-            </p>
-          </div>
-        </section>
-      </div>
 
       <Footer />
     </main>
